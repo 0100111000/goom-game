@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu0ka71mn67o6"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_55uqj"]
+[ext_resource type="FontFile" uid="uid://dpla8p1ljikcc" path="res://fonts/Pixeled.ttf" id="2_k61ce"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_55uqj")
+
+[node name="Score_Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 140.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_k61ce")
+theme_override_font_sizes/font_size = 50
+text = "00"
+horizontal_alignment = 1
+
+[node name="Message_Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -221.0
+offset_right = 182.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = -60
+theme_override_fonts/font = ExtResource("2_k61ce")
+theme_override_font_sizes/font_size = 64
+text = "GOOM GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Start_Button" type="Button" parent="."]
+offset_left = 83.0
+offset_top = 526.0
+offset_right = 361.0
+offset_bottom = 674.0
+theme_override_fonts/font = ExtResource("2_k61ce")
+theme_override_font_sizes/font_size = 50
+text = "START"
+
+[node name="Message_Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="Message_Timer" to="." method="_on_message_timer_timeout"]
